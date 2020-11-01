@@ -1,0 +1,80 @@
+body{
+    background-color: rgba(0, 0, 0, 1);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+#title-box{
+    /* background-image: url("images/background.png"); */
+    background-color: rgb(61, 25, 3);
+    background-repeat: repeat-x;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: rgb(255, 208, 0);
+    /* height: 40px; */
+}
+
+#quiz-labels{
+    background-color: whitesmoke;
+    border: 1px solid darkgrey;
+    padding: 1px;
+    font-family:'Courier New', Courier, monospace;
+    color: black;
+    /* border: 3px solid goldenrod; */
+    position: relative;
+    /* height: 170px; */
+    top: 50%;
+    /* transform: translate(0, -50%); */
+}
+
+#answer-infinitive{
+    font-weight: bold;
+}
+
+#answer-past-simple{
+    font-weight: bold;
+}
+
+#answer-past-participle{
+    font-weight: bold;
+}
+
+#message-board{
+    position:relative;
+    background-color: whitesmoke;
+    color: black;
+    font-weight: bold;
+    border: 1px solid darkgrey;
+    padding: 1px;
+    height: 120px;
+    /* width: 300px; */
+    /* transform: translate(0, -50%); */
+    font-family:'Courier New', Courier, monospace;
+    
+}
+
+#message{
+    position:absolute;
+    width: fit-content;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+
+#final-buttons{
+    position: relative;
+    top: 5px;
+}
+
+.btn-yellow {
+    background-color: rgb(102, 101, 19); 
+    color: black;
+    border-radius: 5px;
+}
+
+.btn-yellow:hover {
+    background-color: rgb(251, 251, 34); 
+    color: darkgrey;
+}

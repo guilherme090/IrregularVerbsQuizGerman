@@ -19,6 +19,10 @@
                     <label>Learned words: </label><input type="number" id="learned-words" min="1" max="100" value="1"></input>
                     <br>
 
+                    <!-- Present (label and checkbox) -->
+                    <input type="checkbox" id="include-present" onclick="togglePresent()">
+                    <label>Include Present</label> 
+
                     <!-- Past Simple (label and checkbox) -->
                     <input type="checkbox" id="include-past-simple" onclick="togglePastSimple()">
                     <label>Include Past Simple</label> 
@@ -42,6 +46,7 @@
                     </article>
 
                     <ul><label class="answers">Infinitive:</label> <label class="answers" id="answer-infinitive"></label></ul>
+                    <ul><label class="answers">Present:</label> <input class="answers" type="text"label class="answers" id="answer-present"></input></ul>
                     <ul><label class="answers">Past Simple:</label> <input class="answers" type="text" id="answer-past-simple"></input></ul>
                     <ul><label class="answers">Past Participle:</label> <input class="answers" type="text" id="answer-past-participle"></input></ul>
     

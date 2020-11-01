@@ -24,28 +24,34 @@ Labels that will store the student's data.
 // Student data
 
 let studentLearnedWords = document.querySelector('#learned-words');
+let presentCheckbox = document.querySelector('#include-present');
 let pastSimpleCheckbox = document.querySelector('#include-past-simple');
+let pastParticipleCheckbox = document.querySelector('#include-past-participle');
 
 /* 
 ----------------------------------------------------------------------------------
-Auxiliary functions (togglePastSimple() / togglePastParticiple())
+Auxiliary functions (togglePresent() / togglePastSimple() / togglePastParticiple())
 ----------------------------------------------------------------------------------
 Activated when labels are clicked. If both are unchecked, check the other one.
 */ 
 
+function togglePresent(){
+    if(presentCheckbox.checked == false && pastSimpleCheckbox.checked == false && pastParticipleCheckbox.checked == false){
+        pastSimpleCheckbox.checked = true;
+    }
+}
+
 function togglePastSimple(){
-    if(pastSimpleCheckbox.checked == false && pastParticipleCheckbox.checked == false){
+    if(presentCheckbox.checked == false && pastSimpleCheckbox.checked == false && pastParticipleCheckbox.checked == false){
         pastParticipleCheckbox.checked = true;
     }
 }
 
 function togglePastParticiple(){
-    if(pastSimpleCheckbox.checked == false && pastParticipleCheckbox.checked == false){
-        pastSimpleCheckbox.checked = true;
+    if(presentCheckbox.checked == false && pastSimpleCheckbox.checked == false && pastParticipleCheckbox.checked == false){
+        presentCheckbox.checked = true;
     }
 }
-
-let pastParticipleCheckbox = document.querySelector('#include-past-participle');
 
 // Message board
 
@@ -55,6 +61,7 @@ let messageBoard = document.querySelector('#message');
 
 let wordNumber = document.querySelector('#word-no');
 let correctPct = document.querySelector('#correct-pct');
+let presentAnswer = document.querySelector('#answer-present');
 let infinitiveAnswer = document.querySelector('#answer-infinitive');
 let pastSimpleAnswer = document.querySelector('#answer-past-simple');
 let pastParticipleAnswer = document.querySelector('#answer-past-participle');
@@ -65,6 +72,7 @@ let allLabels = document.getElementsByClassName('answers');
 let quizLogBoard = document.querySelector('#message-log');
 
 // Update functions
+
 function updateStudentScore(){
     if(aluno.words_total === 0){
         correctPct.innerHTML = '0.00';
@@ -75,106 +83,43 @@ function updateStudentScore(){
 }
 
 let rawListOfVerbs = 
-"say#said#said*" +
-"make#made#made*" +
-"go#went#gone*" +
-"take#took#taken*" +
-"come#came#come*" +
-"see#saw#seen*" +
-"know#knew#known*" +
-"get#got#got/gotten*" +
-"give#gave#given*" +
-"find#found#found*" +
-"think#thought#thought*" +
-"tell#told#told*" +
-"become#became#become*" +
-"show#showed#shown*" +
-"leave#left#left*" +
-"feel#felt#felt*" +
-"put#put#put*" +
-"bring#brought#brought*" +
-"begin#began#begun*" +
-"keep#kept#kept*" +
-"hold#held#held*" +
-"write#wrote#written*" +
-"stand#stood#stood*" +
-"hear#heard#heard*" +
-"let#let#let*" +
-"mean#meant#meant*" +
-"set#set#set*" +
-"meet#met#met*" +
-"run#ran#run*" +
-"pay#paid#paid*" +
-"sit#sat#sat*" +
-"speak#spoke#spoken*" +
-"lie#lay#lain*" +
-"lead#led#led*" +
-"read#read#read*" +
-"grow#grew#grown*" +
-"lose#lost#lost*" +
-"fall#fell#fallen*" +
-"send#sent#sent*" +
-"build#built#built*" +
-"understand#understood#understood*" +
-"draw#drew#drawn*" +
-"break#broke#broken*" +
-"spend#spent#spent*" +
-"cut#cut#cut*" +
-"rise#rose#risen*" +
-"drive#drove#driven*" +
-"buy#bought#bought*" +
-"wear#wore#worn*" +
-"choose#chose#chosen*" +
-"seek#sought#sought*" +
-"throw#threw#thrown*" +
-"catch#caught#caught*" +
-"deal#dealt#dealt*" +
-"win#won#won*" +
-"forget#forgot#forgotten*" +
-"lay#laid#laid*" +
-"sell#sold#sold*" +
-"fight#fought#fought*" +
-"bear#bore#born*" +
-"teach#taught#taught*" +
-"eat#ate#eaten*" +
-"sing#sang#sung*" +
-"strike#struck#struck*" +
-"hang#hung#hung*" +
-"shake#shook#shaken*" +
-"ride#rode#ridden*" +
-"feed#fed#fed*" +
-"shoot#shot#shot*" +
-"drink#drank#drunk*" +
-"hit#hit#hit*" +
-"arise#arose#arisen*" +
-"fly#flew#flown*" +
-"spread#spread#spread*" +
-"sleep#slept#slept*" +
-"cost#cost#cost*" +
-"beat#beat#beaten*" +
-"light#lit#lit*" +
-"bind#bound#bound*" +
-"cast#cast#cast*" +
-"hide#hid#hidden*" +
-"swing#swung#swung*" +
-"blow#blew#blown*" +
-"swim#swam#swum*" +
-"bend#bent#bent*" +
-"wake#woke#woken*" +
-"stick#stuck#stuck*" +
-"sweep#swept#swept*" +
-"undertake#undertook#undertaken*" +
-"shut#shut#shut*" +
-"steal#stole#stolen*" +
-"tear#tore#torn*" +
-"hurt#hurt#hurt*" +
-"ring#rang#rung*" +
-"lend#lent#lent*" +
-"sink#sank#sunk*" +
-"overcome#overcame#overcome*" +
-"freeze#froze#frozen*" +
-"shine#shone#shone*" +
-"withdraw#withdrew#withdrawn";
+    "beginnen#beginnt#begann#hat begonnen*" +
+    "bleiben#bleibt#blieb#ist geblieben*" +
+    "bringen#bringt#brachte#hat gebracht*" +
+    "denken#denkt#dachte#hat gedacht*" +
+    "dürfen#darf#durfte#hat gedurft*"; +
+    "essen#isst#aß#hat gegessen*"; +
+    "fahren#fährt#fuhr#hat gefahren/ist gefahren*"; +
+    "fangen#fängt#fing#hat gefangen*"; +
+    "finden#findet#fand#hat gefunden*"; +
+    "fliegen#fliegt#flog#hat geflogen/ist geflogen*"; +
+    "geben#gibt#gab#hat gegeben*"; +
+    "gehen#geht#ging#ist gegangen*"; +
+    "haben#hat#hatte#hat gehabt*"; +
+    "heißen#heißt#hieß#hat geheißen*"; +
+    "helfen#hilft#half#hat geholfen*"; +
+    "kennen#kennt#kannte#hat gekannt*"; +
+    "kommen#kommt#kam#ist gekommen*"; +
+    "können#kann#konnte#hat gekonnt*"; +
+    "lesen#liest#las#hat gelesen*"; +
+    "mögen#mag#mochte#hat gemocht*"; +
+    "müssen#muss#musste#hat gemusst*"; +
+    "nehmen#nimmt#nahm#hat genommen*"; +
+    "rufen#ruft#rief#hat gerufen*"; +
+    "schlafen#schläft#schlief#hat geschlafen"; + 
+    "schreiben#schreibt#schrieb#hat geschrieben*"; +
+    "schwimmen#schwimmt#schwamm#hat geschwommen/ist geschwommen*"; +
+    "sehen#sieht#sah#hat gesehen*"; +
+    "sein#ist#war#ist gewesen*"; +
+    "singen#singt#sang#hat gesungen*"; +
+    "sollen#soll#sollte#hat gesollt*"; +
+    "sprechen#spricht#sprach#hat gesprochen*"; +
+    "stehen#steht#stand#hat gestanden*"; +
+    "treffen#trifft#traf#hat getroffen*"; +
+    "trinken#trinkt#trank#hat getrunken*"; +
+    "tun#tut#tat#hat getan*"; +
+    "wissen#weiß#wusste#hat gewusst*"; +
+    "wollen#will#wollte#hat gewollt*";
 
 /* 
 ----------------------------------------------------------------------------------
@@ -185,8 +130,9 @@ read from a .txt file. Instead, it will be directly loaded here.
 */ 
 
 class verb {
-    constructor(infinitive, past_simple, past_participle, isTaken){
+    constructor(infinitive, present, past_simple, past_participle, isTaken){
         this._infinitive = infinitive;
+        this._present = present;
         this._past_simple = past_simple;
         this._past_participle = past_participle;
         this._taken = isTaken;       
@@ -194,6 +140,10 @@ class verb {
 
     get infinitive(){
         return this._infinitive;
+    }
+
+    get present(){
+        return this._present;
     }
 
     get pastSimple(){
@@ -259,15 +209,19 @@ function shuffleVerb(currentListOfVerbs, currentWordCount){
     return shuffledNumber;
 }
 
-function showInfinitive(theInfinitive, thePastSimple, thePastParticiple, theListOfVerbs, theIndex){
+function showInfinitive(theInfinitive, thePresent, thePastSimple, thePastParticiple, theListOfVerbs, theIndex){
     theInfinitive.innerHTML = theListOfVerbs[theIndex].infinitive;
+    thePresent.value = '';
     thePastSimple.value = '';
     thePastParticiple.value = '';
 }
 
-function showPast(theInfinitive, thePastSimple, thePastParticiple, theListOfVerbs, theIndex){
+function showPast(theInfinitive, thePresent, thePastSimple, thePastParticiple, theListOfVerbs, theIndex){
     messageBoard.innerHTML = messageBoard.innerHTML + '<br />' + '<br />' +
-    '(' + theListOfVerbs[theIndex].infinitive + ' - ' + theListOfVerbs[theIndex].pastSimple + ' - ' + theListOfVerbs[theIndex].pastParticiple + ')';
+    '(' + theListOfVerbs[theIndex].infinitive + ' - ' + 
+    theListOfVerbs[theIndex].present + ' - ' +
+    theListOfVerbs[theIndex].pastSimple + ' - ' 
+    + theListOfVerbs[theIndex].pastParticiple + ')';
 }
 
 /*
@@ -288,7 +242,7 @@ const listOfVerbs = []; // stores all verbs that are in the txt file loaded as v
 
 verbsRead.forEach(verbForm => {
     let singleVerb = verbForm.split('#');
-    listOfVerbs.push(new verb(singleVerb[0], singleVerb[1], singleVerb[2], false));   
+    listOfVerbs.push(new verb(singleVerb[0], singleVerb[1], singleVerb[2], singleVerb[3], false));   
 });
 
 console.log(listOfVerbs);
@@ -328,6 +282,20 @@ that will be accepted as true and checks if any of them matches the user's answe
 Ex: got/gotten will compare the user's response to both got and gotten.
 */
 
+function isCorrectPresent(userPresent, programPresent){
+    // In case the program is not checking past simple, say it is correct. 
+    if(presentCheckbox.checked == false){
+        return true;
+    }
+    let correctPresent = programPresent.split('/'); // all possibilities for past simple
+    for(let i = 0; i < correctPresent.length; i++){
+        if (userPresent === correctPresent[i]){
+            return true;
+        }
+    }
+    return false;
+}
+
 function isCorrectPastSimple(userPastSimple, programPastSimple){
     // In case the program is not checking past simple, say it is correct. 
     if(pastSimpleCheckbox.checked == false){
@@ -362,7 +330,9 @@ function correctWord(){
     console.log(aluno);
     updateStudentScore();
     logMessage = logMessage.concat('| ' + infinitiveAnswer.innerHTML + ' | ' + 
-        pastSimpleAnswer.value.toLowerCase() + ' | ' + pastParticipleAnswer.value.toLowerCase() + ' |' + ' >>> (correct)' + '<br>');
+    presentAnswer.value.toLowerCase() + ' | ' +
+    pastSimpleAnswer.value.toLowerCase() + ' | ' + 
+    pastParticipleAnswer.value.toLowerCase() + ' |' + ' >>> (correct)' + '<br>');
     quizLogBoard.innerHTML = logMessage;
 };
 
@@ -371,14 +341,17 @@ function incorrectWord(){
     console.log(aluno);
     updateStudentScore();
     logMessage = logMessage.concat('*| ' + infinitiveAnswer.innerHTML + ' | ' + 
-    pastSimpleAnswer.value.toLowerCase() + ' | ' + pastParticipleAnswer.value.toLowerCase() + ' |' + ' >>> (incorrect)' + '<br>');
+    presentAnswer.value.toLowerCase() + ' | ' +
+    pastSimpleAnswer.value.toLowerCase() + ' | ' + 
+    pastParticipleAnswer.value.toLowerCase() + ' |' + ' >>> (incorrect)' + '<br>');
     quizLogBoard.innerHTML = logMessage;
 };
 
 let showAnsBtn = document.querySelector('#btn-show-answer');
 showAnsBtn.onclick = function(){
     // Signal to the state machine that answer was shown
-    if(isCorrectPastSimple(pastSimpleAnswer.value.toLowerCase(), listOfVerbs[shuffledIndex].pastSimple) &&
+    if(isCorrectPresent(presentAnswer.value.toLowerCase(), listOfVerbs[shuffledIndex].present) &&
+       isCorrectPastSimple(pastSimpleAnswer.value.toLowerCase(), listOfVerbs[shuffledIndex].pastSimple) &&
        isCorrectPastParticiple(pastParticipleAnswer.value.toLowerCase(), listOfVerbs[shuffledIndex].pastParticiple) ){
         correctWord();
         stateMachine(states.QUIZ_STARTED_ANSWER_CORRECT);
@@ -416,6 +389,7 @@ saveBtn.onclick = function(){
     stateMachine(states.STUDENT_REGISTERED);
     wordNumber.innerHTML = 0;
     infinitiveAnswer.innerHTML = '';
+    presentAnswer.value = '';
     pastSimpleAnswer.value = '';
     pastParticipleAnswer.value = '';
     resetStudentScore();
@@ -473,8 +447,10 @@ function stateMachine(currentState){
             nextWordBtn.style.backgroundColor="#555500";
             saveBtn.disabled = true;
             saveBtn.style.backgroundColor="#555500";
+            presentCheckbox.checked = true;
             pastSimpleCheckbox.checked = true;
             pastParticipleCheckbox.checked = true;
+            presentCheckbox.disabled = false;
             pastSimpleCheckbox.disabled = false;
             pastParticipleCheckbox.disabled = false;
             break;
@@ -483,7 +459,7 @@ function stateMachine(currentState){
             messageBoard.innerHTML = '';
             shuffledIndex = shuffleVerb(listOfVerbs, wordNumber);
             console.log(shuffledIndex);
-            showInfinitive(infinitiveAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
+            showInfinitive(infinitiveAnswer, presentAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
             studentLearnedWords.disabled = true;
             startBtn.disabled = true;
             startBtn.style.backgroundColor="#555500";
@@ -493,8 +469,15 @@ function stateMachine(currentState){
             nextWordBtn.style.backgroundColor="#555500";
             saveBtn.disabled = false;
             saveBtn.style.backgroundColor="#DDDD00";
+            presentCheckbox.disabled = true;
             pastSimpleCheckbox.disabled = true;
             pastParticipleCheckbox.disabled = true;
+            if(presentCheckbox.checked == false){
+                presentAnswer.value = '---';
+                presentAnswer.disabled = true;
+            }else{
+                presentAnswer.disabled = false;
+            }
             if(pastSimpleCheckbox.checked == false){
                 pastSimpleAnswer.value = '---';
                 pastSimpleAnswer.disabled = true;
@@ -524,7 +507,7 @@ function stateMachine(currentState){
         case states.QUIZ_STARTED_ANSWER_CORRECT:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
             messageBoard.innerHTML = 'Congratulations! Your answer is correct. Click on NEXT WORD to proceed.';
-            showPast(infinitiveAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
+            showPast(infinitiveAnswer, presentAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
             studentLearnedWords.disabled = true;
             startBtn.disabled = true;
             startBtn.style.backgroundColor="#555500";
@@ -538,7 +521,7 @@ function stateMachine(currentState){
         case states.QUIZ_STARTED_ANSWER_INCORRECT:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
             messageBoard.innerHTML = 'Unfortunately, your answer is incorrect. Click on NEXT WORD to proceed.';
-            showPast(infinitiveAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
+            showPast(infinitiveAnswer, presentAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
             studentLearnedWords.disabled = true;
             startBtn.disabled = true;
             startBtn.style.backgroundColor="#555500";
