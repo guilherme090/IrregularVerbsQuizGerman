@@ -457,7 +457,6 @@ forbidden functions (like starting a quiz without a verb list).
 const states = {
     STUDENT_REGISTERED: 'student-registered',
     QUIZ_STARTED_NO_ANSWER: 'quiz-started-no-answer', 
-    QUIZ_STARTED_ANSWER_SHOWN: 'quiz-started-answer-shown',
     QUIZ_STARTED_ANSWER_CORRECT: 'quiz-started-answer-correct',
     QUIZ_STARTED_ANSWER_INCORRECT: 'quiz-started-answer-incorrect',
     NO_MORE_WORDS: 'no-more-words'
@@ -539,18 +538,6 @@ function stateMachine(currentState){
                     checkbox.disabled = true;
                 }   
             );
-            break;
-        case states.QUIZ_STARTED_ANSWER_SHOWN:
-            messageBoard.innerHTML = 'Was the given answer correct or incorrect?';
-            showPast(infinitiveAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
-            startBtn.disabled = true;
-            startBtn.style.backgroundColor="#555500";
-            showAnsBtn.disabled = true;
-            showAnsBtn.style.backgroundColor="#555500";
-            nextWordBtn.disabled = false;
-            nextWordBtn.style.backgroundColor="#DDDD00";
-            saveBtn.disabled = false;
-            saveBtn.style.backgroundColor="#DDDD00";
             break;
         case states.QUIZ_STARTED_ANSWER_CORRECT:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
