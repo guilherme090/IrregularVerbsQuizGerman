@@ -87,38 +87,38 @@ let rawListOfVerbs =
     "bleiben#bleibt#blieb#ist geblieben*" +
     "bringen#bringt#brachte#hat gebracht*" +
     "denken#denkt#dachte#hat gedacht*" +
-    "dürfen#darf#durfte#hat gedurft*"; +
-    "essen#isst#aß#hat gegessen*"; +
-    "fahren#fährt#fuhr#hat gefahren/ist gefahren*"; +
-    "fangen#fängt#fing#hat gefangen*"; +
-    "finden#findet#fand#hat gefunden*"; +
-    "fliegen#fliegt#flog#hat geflogen/ist geflogen*"; +
-    "geben#gibt#gab#hat gegeben*"; +
-    "gehen#geht#ging#ist gegangen*"; +
-    "haben#hat#hatte#hat gehabt*"; +
-    "heißen#heißt#hieß#hat geheißen*"; +
-    "helfen#hilft#half#hat geholfen*"; +
-    "kennen#kennt#kannte#hat gekannt*"; +
-    "kommen#kommt#kam#ist gekommen*"; +
-    "können#kann#konnte#hat gekonnt*"; +
-    "lesen#liest#las#hat gelesen*"; +
-    "mögen#mag#mochte#hat gemocht*"; +
-    "müssen#muss#musste#hat gemusst*"; +
-    "nehmen#nimmt#nahm#hat genommen*"; +
-    "rufen#ruft#rief#hat gerufen*"; +
-    "schlafen#schläft#schlief#hat geschlafen"; + 
-    "schreiben#schreibt#schrieb#hat geschrieben*"; +
-    "schwimmen#schwimmt#schwamm#hat geschwommen/ist geschwommen*"; +
-    "sehen#sieht#sah#hat gesehen*"; +
-    "sein#ist#war#ist gewesen*"; +
-    "singen#singt#sang#hat gesungen*"; +
-    "sollen#soll#sollte#hat gesollt*"; +
-    "sprechen#spricht#sprach#hat gesprochen*"; +
-    "stehen#steht#stand#hat gestanden*"; +
-    "treffen#trifft#traf#hat getroffen*"; +
-    "trinken#trinkt#trank#hat getrunken*"; +
-    "tun#tut#tat#hat getan*"; +
-    "wissen#weiß#wusste#hat gewusst*"; +
+    "dürfen#darf#durfte#hat gedurft*" +
+    "essen#isst#aß#hat gegessen*" +
+    "fahren#fährt#fuhr#hat gefahren/ist gefahren*" +
+    "fangen#fängt#fing#hat gefangen*" +
+    "finden#findet#fand#hat gefunden*" +
+    "fliegen#fliegt#flog#hat geflogen/ist geflogen*" +
+    "geben#gibt#gab#hat gegeben*" +
+    "gehen#geht#ging#ist gegangen*" +
+    "haben#hat#hatte#hat gehabt*" +
+    "heißen#heißt#hieß#hat geheißen*" +
+    "helfen#hilft#half#hat geholfen*" +
+    "kennen#kennt#kannte#hat gekannt*" +
+    "kommen#kommt#kam#ist gekommen*" +
+    "können#kann#konnte#hat gekonnt*" +
+    "lesen#liest#las#hat gelesen*" +
+    "mögen#mag#mochte#hat gemocht*" +
+    "müssen#muss#musste#hat gemusst*" +
+    "nehmen#nimmt#nahm#hat genommen*" +
+    "rufen#ruft#rief#hat gerufen*" +
+    "schlafen#schläft#schlief#hat geschlafen" + 
+    "schreiben#schreibt#schrieb#hat geschrieben*" +
+    "schwimmen#schwimmt#schwamm#hat geschwommen/ist geschwommen*" +
+    "sehen#sieht#sah#hat gesehen*" +
+    "sein#ist#war#ist gewesen*" +
+    "singen#singt#sang#hat gesungen*" +
+    "sollen#soll#sollte#hat gesollt*" +
+    "sprechen#spricht#sprach#hat gesprochen*" +
+    "stehen#steht#stand#hat gestanden*" +
+    "treffen#trifft#traf#hat getroffen*" +
+    "trinken#trinkt#trank#hat getrunken*" +
+    "tun#tut#tat#hat getan*" +
+    "wissen#weiß#wusste#hat gewusst*" +
     "wollen#will#wollte#hat gewollt*";
 
 /* 
