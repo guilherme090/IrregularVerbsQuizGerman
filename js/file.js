@@ -98,21 +98,177 @@ let rawListOfVerbs =
     "beginnen#beginnt#begann#hat begonnen#@A1*" +
     "bleiben#bleibt#blieb#ist geblieben#@A1*" +
     "bringen#bringt#brachte#hat gebracht#@A1*" +
+    "denken#denkt#dachte#hat gedacht#A1*" +
+    "dürfen#darf#durfte#hat gedurft#A1*" +
+    "essen#isst#aß#hat gegessen#A1*" +
+    "fahren#fährt#fuhr#hat gefahren/ist gefahren#A1*" +
+    "fangen#fängt#fing#hat gefangen#A1*" +
+    "finden#findet#fand#hat gefunden#A1*" +
+    "fliegen#fliegt#flog#hat geflogen/ist geflogen#A1*" +
+    "geben#gibt#gab#hat gegeben#A1*" +
+    "gehen#geht#ging#ist gegangen#A1*" +
+    "haben#hat#hatte#hat gehabt#A1*" +
+    "heißen#heißt#hieß#hat geheißen#A1*" +
+    "helfen#hilft#half#hat geholfen#A1*" +
+    "kennen#kennt#kannte#hat gekannt#A1*" +
+    "kommen#kommt#kam#ist gekommen#A1*" +
+    "können#kann#konnte#hat gekonnt#A1*" +
+    "lesen#liest#las#hat gelesen#A1*" +
+    "mögen#mag#mochte#hat gemocht#A1*" +
+    "müssen#muss#musste#hat gemusst#A1*" +
+    "nehmen#nimmt#nahm#hat genommen#A1*" +
+    "rufen#ruft#rief#hat gerufen#A1*" +
+    "schlafen#schläft#schlief#hat geschlafen#A1 " +
+    "schreiben#schreibt#schrieb#hat geschrieben#A1*" +
+    "schwimmen#schwimmt#schwamm#hat geschwommen/ist geschwommen#A1*" +
+    "sehen#sieht#sah#hat gesehen#A1*" +
+    "sein#ist#war#ist gewesen#A1*" +
+    "singen#singt#sang#hat gesungen#A1*" +
+    "sollen#soll#sollte#hat gesollt#A1*" +
+    "sprechen#spricht#sprach#hat gesprochen#A1*" +
+    "stehen#steht#stand#hat gestanden#A1*" +
+    "treffen#trifft#traf#hat getroffen#A1*" +
+    "trinken#trinkt#trank#hat getrunken#A1*" +
+    "tun#tut#tat#hat getan#A1*" +
+    "wissen#weiß#wusste#hat gewusst#A1*" +
+    "wollen#will#wollte#hat gewollt#A1*" +
     "backen#backt#buk/backte#hat gebacken/hat gebackt#@A2*" +
     "biegen#biegt#bog#hat gebogen/ist gebogen#@A2*" +
     "bieten#bietet#bot#hat geboten#@A2*" +
+    "bitten#bittet#bat#hat gebeten#A2*" +
+    "braten#brät#briet#hat gebraten#A2*" +
+    "fallen#fällt#fiel#ist gefallen#A2*" +
+    "gefallen#gefällt#gefiel#hat gefallen#A2*" +
+    "gewinnen#gewinnt#gewann#hat gewonnen#A2*" +
+    "laden#lädt#lud#hat geladen#A2*" +
+    "laufen#läuft#lief#ist gelaufen#A2*" +
+    "liegen#liegt#lag#hat gelegen#A2*" +
+    "nennen#nennt#nannte#hat genannt#A2*" +
+    "rennen#rennt#rannte#ist gerannt#A2*" +
+    "riechen#riecht#roch#hat gerochen#A2*" +
+    "schließen#schließt#schloss#hat geschlossen#A2*" +
+    "sitzen#sitzt#saß#hat gesessen#A2*" +
+    "steigen#steigt#stieg#ist gestiegen#A2*" +
+    "sterben#stirbt#starb#ist gestorben#A2*" +
+    "treiben#treibt#trieb#hat getrieben/ist getrieben#A2*" +
+    "vergessen#vergisst#vergaß#hat vergessen#A2*" +
+    "verlieren#verliert#verlor#hat verloren#A2*" +
+    "wachsen#wächst#wuchs#ist gewachsen#A2*" +
+    "waschen#wäscht#wusch#hat gewaschen#A2*" +
+    "werden#wird#wurde#ist geworden#A2*" +
+    "werfen#wirft#warf#hat geworfen#A2*" +
+    "ziehen#zieht#zog#hat gezogen/ist gezogen#A2*" +
     "befehlen#befiehlt#befahl#hat befohlen#@B1*" +
     "beißen#beißt#biss#hat gebissen#@B1*" +
     "binden#bindet#band#hat gebunden#@B1*" +
+    "brechen#bricht#brach#hat gebrochen/ist gebrochen#B1*" +
+    "brennen#brennt#brannte#hat gebrannt#B1*" +
+    "empfehlen#empfiehlt#empfahl#hat empfohlen#B1*" +
+    "erschrecken#erschrickt/erschreckt#erschrak/erschreckte#ist erschrocken/hat erschreckt#B1*" +
+    "fliehen#flieht#floh#ist geflohen#B1*" +
+    "fließen#fließt#floss#ist geflossen#B1*" +
+    "fressen#frisst#fraß#hat gefressen#B1*" +
+    "frieren#friert#fror#hat gefroren/ist gefroren#B1*" +
+    "gelingen#gelingt#gelang#ist gelungen#B1*" +
+    "gelten#gilt#galt#hat gegolten#B1*" +
+    "genießen#genießt#genoss#hat genossen#B1*" +
+    "geschehen#geschieht#geschah#ist geschehen#B1*" +
+    "gießen#gießt#goss#hat gegossen#B1*" +
+    "gleichen#gleicht#glich#hat geglichen#B1*" +
+    "graben#gräbt#grub#hat gegraben#B1*" +
+    "greifen#greift#griff#hat gegriffen#B1*" +
+    "halten#hält#hielt#hat gehalten#B1*" +
+    "hängen#hängt#hing/hängte#hat gehangen/hat gehängt#B1*" +
+    "heben#hebt#hob#hat gehoben#B1*" +
+    "klingen#klingt#klang#hat geklungen#B1*" +
+    "lassen#lässt#ließ#hat gelassen#B1*" +
+    "leiden#leidet#litt#hat gelitten#B1*" +
+    "leihen#leiht#lieh#hat geliehen#B1*" +
+    "lügen#lügt#log#hat gelogen#B1*" +
+    "meiden#meidet#mied#hat gemieden#B1*" +
+    "messen#misst#maß#hat gemessen#B1*" +
+    "raten#rät#riet#hat geraten#B1*" +
+    "reiben#reibt#rieb#hat gerieben#B1*" +
+    "reiten#reitet#ritt#hat/ist geritten#B1*" +
+    "schaffen#schafft#schuf/schaffte#hat geschaffen/hat geschafft#B1*" +
+    "scheiden#scheidet#schied#hat geschieden/ist geschieden#B1*" +
+    "scheinen#scheint#schien#hat geschienen#B1*" +
+    "scheißen#scheißt#schiss#hat geschissen#B1*" +
+    "schieben#schiebt#schob#hat geschoben#B1*" +
+    "schießen#schießt#schoss#hat geschossen/ist geschossen#B1*" +
+    "schlagen#schlägt#schlug#hat geschlagen#B1*" +
+    "schmeißen#schmeißt#schmiss#hat geschmissen#B1*" +
+    "schneiden#schneidet#schnitt#hat geschnitten#B1*" +
+    "schreien#schreit#schrie#hat geschrien#B1*" +
+    "senden#sendet#sandte/sendete#hat gesandt/hat gesendet*#B1 " +
+    "sinken#sinkt#sank#ist gesunken#B1*" +
+    "springen#springt#sprang#ist gesprungen#B1*" +
+    "stehlen#stiehlt#stahl#hat gestohlen#B1*" +
+    "stinken#stinkt#stank#hat gestunken#B1*" +
+    "streiten#streitet#stritt#hat gestritten#B1*" +
+    "tragen#trägt#trug#hat getragen#B1*" +
+    "treten#tritt#trat#hat getreten/ist getreten#B1*" +
+    "trügen#trügt#trog#hat getrogen#B1*" +
+    "verzeihen#verzeiht#verzieh#hat verziehen#B1*" +
+    "weisen#weist#wies#hat gewiesen#B1*" +
+    "werben#wirbt#warb#hat geworben#B1*" +
+    "wiegen#wiegt#wog#hat gewogen#B1*" +
+    "zwingen#zwingt#zwang#hat gezwungen#B1*" +
     "bergen#birgt#barg#hat geborgen#@B2*" +
     "blasen#bläst#blies#hat geblasen#@B2*" +
     "gebären#gebärt#gebar#hat geboren#@B2*" +
+    "pfeifen#pfeift#pfiff#hat gepfiffen#B2*" +
+    "reißen#reißt#riss#hat gerissen#B2*" +
+    "ringen#ringt#rang#hat gerungen#B2*" +
+    "saufen#säuft#soff#hat gesoffen#B2*" +
+    "schmelzen#schmilzt#schmolz#hat geschmolzen/ist geschmolzen#B2*" +
+    "schreiten#schreitet#schritt#ist geschritten#B2*" +
+    "schweigen#schweigt#schwieg#hat geschwiegen#B2*" +
+    "schwellen#schwillt#schwoll#ist geschwollen#B2*" +
+    "schwinden#schwindet#schwand#ist geschwunden#B2*" +
+    "schwören#schwört#schwor#hat geschworen#B2*" +
+    "spinnen#spinnt#spann#hat gesponnen#B2*" +
+    "stechen#sticht#stach#hat gestochen#B2*" +
+    "stoßen#stößt#stieß#hat gestoßen/ist gestoßen#B2*" +
+    "streichen#streicht#strich#hat gestrichen/ist gestrichen#B2*" +
+    "verderben#verdirbt#verdarb#hat verdorben/ist verdorben#B2*" +
+    "weichen#weicht#wich#ist gewichen#B2*" +
+    "wenden#wendet#wandte/wandete#hat gewandt/hat gewendet*#B2" +
+    "winden#windet#wand#hat gewunden#B2*" +
     "bewegen#bewegt#bewog/bewegte#hat bewogen/hat bewegt#@C1*" + 
     "dringen#dringt#drang#hat gedrungen/ist gedrungen#@C1*" +
     "erlöschen#erlischt#erlosch#ist erloschen#@C1*" +
+    "fechten#ficht#focht#hat gefochten#C1*" +
+    "gedeihen#gedeiht#gedieh#ist gediehen#C1*" +
+    "genesen#genest#genas#ist genesen#C1*" +
+    "gleiten#gleitet#glitt#ist geglitten#C1*" +
+    "klimmen#klimmt#klomm/klimmte#ist geklommen/ist geklimmt*#C1" +
+    "kneifen#kneift#kniff#hat gekniffen*#C1 " +
+    "kriechen#kriecht#kroch#ist gekrochen#C1*" +
+    "melken#melkt#molk#hat gemolken#C1*" +
+    "preisen#preist#pries#hat gepriesen#C1*" +
+    "quellen#quillt#quoll#ist gequollen#C1*" +
+    "rinnen#rinnt#rann#ist geronnen#C1*" +
+    "saugen#saugt#sog/saugte#hat gesogen/hat gesaugt*#C1" +
+    "schleichen#schleicht#schlich#ist geschlichen#C1*" +
+    "schleifen#schleift#schliff/schleifte#hat geschliffen/hat geschleift*#C1" +
+    "schlingen#schlingt#schlang#hat geschlungen#C1*" +
+    "schwingen#schwingt#schwang#hat geschwungen/ist geschwungen#C1*" +
+    "sinnen#sinnt#sann#hat gesonnen#C1*" +
+    "sprießen#sprießt#spross#ist gesprossen#C1*" +
+    "wringen#wringt#wrang#hat gewrungen#C1*" +
     "bersten#birst#barst#ist geborsten#@C2*" +
     "bleichen#bleicht#blich/bleichte#ist geblichen/hat gebleicht#@C2*" +
-    "dreschen#drischt#drosch#hat gedroschen#@C2";
+    "dreschen#drischt#drosch#hat gedroschen#@C2" +
+    "flechten#flicht# #flocht#hat geflochten#C2*" +
+    "glimmen#glimmt#glomm/glimmte#hat geglommen/hat geglimmt#C2*" +
+    "hauen#haut#hieb/haute#hat gehauen/hat gehaut#C2*" +
+    "schelten#schilt#schalt#hat gescholten#C2*" +
+    "scheren#schert#schor/scherte#hat geschoren/hat geschert/ist geschert#C2*" +
+    "speien#speit#spie#hat gespien#C2*" +
+    "stieben#stiebt#stob#hat gestoben/ist gestoben#C2*" +
+    "verdrießen#verdrießt#verdross#hat verdrossen#C2*" +
+    "weben#webt#wob#hat gewoben#C2";
 
 /* 
 ----------------------------------------------------------------------------------
