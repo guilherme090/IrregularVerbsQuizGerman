@@ -472,7 +472,7 @@ function stateMachine(currentState){
     switch(currentState){
         case states.STUDENT_REGISTERED:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
-            messageBoard.innerHTML = 'Choose how many words from the list you already know in the "learned words" box and start the quiz anytime.';
+            messageBoard.innerHTML = 'Wählen Sie die Zeitformen und die CEFR-Stufen (A1-C2) Ihres Quiz und starten Sie es, wenn Sie bereit sind.';
             startBtn.disabled = false;
             startBtn.style.backgroundColor="#DDDD00";
             showAnsBtn.disabled = true;
@@ -554,7 +554,7 @@ function stateMachine(currentState){
             break;
         case states.QUIZ_STARTED_ANSWER_CORRECT:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
-            messageBoard.innerHTML = 'Congratulations! Your answer is correct. Click on NEXT WORD to proceed.';
+            messageBoard.innerHTML = 'Herzliche Glückwünsche! Inhre Antwort ist richtig. Klicken Sie auf NÄCHSTEN WORT um das Quiz weiterzumachen.';
             showPast(infinitiveAnswer, presentAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
             startBtn.disabled = true;
             startBtn.style.backgroundColor="#555500";
@@ -567,7 +567,7 @@ function stateMachine(currentState){
             break;
         case states.QUIZ_STARTED_ANSWER_INCORRECT:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
-            messageBoard.innerHTML = 'Unfortunately, your answer is incorrect. Click on NEXT WORD to proceed.';
+            messageBoard.innerHTML = 'Leider ist Inhre Antwort falsch. Klicken Sie auf NÄCHSTEN WORT um das Quiz weiterzumachen.';
             showPast(infinitiveAnswer, presentAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
             startBtn.disabled = true;
             startBtn.style.backgroundColor="#555500";
@@ -582,13 +582,11 @@ function stateMachine(currentState){
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
             let messageToBeShown = 'Your score: ' + aluno.words_right + ' words out of ' + aluno.words_total + '. ';
             if(aluno.words_right / aluno.words_total < 0.6){
-                messageToBeShown = messageToBeShown.concat('Keep working on your list. You will soon memorize a lot of words!');
-            }else if(aluno.words_right / aluno.words_total < 0.9){
-                messageToBeShown = messageToBeShown.concat('You have done a great job! You learned many words from the list!');
+                messageToBeShown = messageToBeShown.concat('Inhre Punktzahl: X Wörter aus Y. Lernen Sie das Verbliste weiter! Bald werden Sie viele wörter auswendig lernen!');
             }else{
-                messageToBeShown = messageToBeShown.concat('Your memorization skills are impressive! You should consider adding more verbs to your list.');
+                messageToBeShown = messageToBeShown.concat('Inhre Punktzahl: X Wörter aus Y. Sie haben die Aufgabe gut gemacht! Sie haben viele Wörter aus der Liste gelernt!');
             }
-            messageToBeShown = messageToBeShown.concat('<br>There are no more words to show. Press RESET QUIZ to create a new quiz.');           
+            messageToBeShown = messageToBeShown.concat('<br>Es gibt nicht mehr Wörter zu sehen. Klicken Sie auf QUIZ NEU ANFANGEN um ein neues Quiz zu erstellen.');           
             messageBoard.innerHTML = messageToBeShown; 
             startBtn.disabled = true;
             startBtn.style.backgroundColor="#555500";
