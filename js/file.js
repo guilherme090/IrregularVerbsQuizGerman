@@ -723,11 +723,11 @@ function stateMachine(currentState){
             break;
         case states.NO_MORE_WORDS:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
-            let messageToBeShown = 'Your score: ' + aluno.words_right + ' words out of ' + aluno.words_total + '. ';
+            let messageToBeShown = 'Inhre Punktzahl: ' + aluno.words_right + ' Wörter aus ' + aluno.words_total + '. ';
             if(aluno.words_right / aluno.words_total < 0.6){
-                messageToBeShown = messageToBeShown.concat('Inhre Punktzahl: X Wörter aus Y. Lernen Sie das Verbliste weiter! Bald werden Sie viele wörter auswendig lernen!');
+                messageToBeShown = messageToBeShown.concat('Lernen Sie das Verbliste weiter! Bald werden Sie viele wörter auswendig lernen!');
             }else{
-                messageToBeShown = messageToBeShown.concat('Inhre Punktzahl: X Wörter aus Y. Sie haben die Aufgabe gut gemacht! Sie haben viele Wörter aus der Liste gelernt!');
+                messageToBeShown = messageToBeShown.concat('Sie haben die Aufgabe gut gemacht! Sie haben viele Wörter aus der Liste gelernt!');
             }
             messageToBeShown = messageToBeShown.concat('<br>Es gibt nicht mehr Wörter zu sehen. Klicken Sie auf QUIZ NEU ANFANGEN um ein neues Quiz zu erstellen.');           
             messageBoard.innerHTML = messageToBeShown; 
