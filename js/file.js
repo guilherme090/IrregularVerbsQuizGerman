@@ -523,7 +523,7 @@ function correctWord(){
     logMessage = logMessage.concat('| ' + infinitiveAnswer.innerHTML + ' | ' + 
     presentAnswer.value.toLowerCase() + ' | ' +
     pastSimpleAnswer.value.toLowerCase() + ' | ' + 
-    pastParticipleAnswer.value.toLowerCase() + ' |' + ' >>> (correct)' + '<br>');
+    pastParticipleAnswer.value.toLowerCase() + ' |' + ' >>> (richtig)' + '<br>');
     quizLogBoard.innerHTML = logMessage;
 };
 
@@ -534,7 +534,7 @@ function incorrectWord(){
     logMessage = logMessage.concat('*| ' + infinitiveAnswer.innerHTML + ' | ' + 
     presentAnswer.value.toLowerCase() + ' | ' +
     pastSimpleAnswer.value.toLowerCase() + ' | ' + 
-    pastParticipleAnswer.value.toLowerCase() + ' |' + ' >>> (incorrect)' + '<br>');
+    pastParticipleAnswer.value.toLowerCase() + ' |' + ' >>> (falsch)' + '<br>');
     quizLogBoard.innerHTML = logMessage;
 };
 
