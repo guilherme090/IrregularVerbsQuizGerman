@@ -21,18 +21,18 @@ Labels
 Labels that will store the student's data.
 */ 
 
-// Student data
+// Student data with quiz parameters
 
-let studentLearnedWords = document.querySelector('#learned-words');
 let presentCheckbox = document.querySelector('#include-present');
 let pastSimpleCheckbox = document.querySelector('#include-past-simple');
 let pastParticipleCheckbox = document.querySelector('#include-past-participle');
+let cefrCheckBoxes = document.querySelectorAll('.cefr');
 
 /* 
 ----------------------------------------------------------------------------------
-Auxiliary functions (togglePresent() / togglePastSimple() / togglePastParticiple())
+Auxiliary functions (toggleXXX())
 ----------------------------------------------------------------------------------
-Activated when labels are clicked. If both are unchecked, check the other one.
+Activated when labels are clicked. If all are unchecked, check one of them.
 */ 
 
 function togglePresent(){
@@ -50,6 +50,18 @@ function togglePastSimple(){
 function togglePastParticiple(){
     if(presentCheckbox.checked == false && pastSimpleCheckbox.checked == false && pastParticipleCheckbox.checked == false){
         presentCheckbox.checked = true;
+    }
+}
+
+function toggleCEFR(){
+    let noneSelected = true;
+    for(let i = 0; i < cefrCheckBoxes.length; i++){
+        if (cefrCheckBoxes[i].checked === true){
+            noneSelected = false;
+        }
+    }
+    if(noneSelected === true){
+        cefrCheckBoxes[0].checked = true;
     }
 }
 
@@ -83,43 +95,24 @@ function updateStudentScore(){
 }
 
 let rawListOfVerbs = 
-    "beginnen#beginnt#begann#hat begonnen*" +
-    "bleiben#bleibt#blieb#ist geblieben*" +
-    "bringen#bringt#brachte#hat gebracht*" +
-    "denken#denkt#dachte#hat gedacht*" +
-    "dürfen#darf#durfte#hat gedurft*" +
-    "essen#isst#aß#hat gegessen*" +
-    "fahren#fährt#fuhr#hat gefahren/ist gefahren*" +
-    "fangen#fängt#fing#hat gefangen*" +
-    "finden#findet#fand#hat gefunden*" +
-    "fliegen#fliegt#flog#hat geflogen/ist geflogen*" +
-    "geben#gibt#gab#hat gegeben*" +
-    "gehen#geht#ging#ist gegangen*" +
-    "haben#hat#hatte#hat gehabt*" +
-    "heißen#heißt#hieß#hat geheißen*" +
-    "helfen#hilft#half#hat geholfen*" +
-    "kennen#kennt#kannte#hat gekannt*" +
-    "kommen#kommt#kam#ist gekommen*" +
-    "können#kann#konnte#hat gekonnt*" +
-    "lesen#liest#las#hat gelesen*" +
-    "mögen#mag#mochte#hat gemocht*" +
-    "müssen#muss#musste#hat gemusst*" +
-    "nehmen#nimmt#nahm#hat genommen*" +
-    "rufen#ruft#rief#hat gerufen*" +
-    "schlafen#schläft#schlief#hat geschlafen" + 
-    "schreiben#schreibt#schrieb#hat geschrieben*" +
-    "schwimmen#schwimmt#schwamm#hat geschwommen/ist geschwommen*" +
-    "sehen#sieht#sah#hat gesehen*" +
-    "sein#ist#war#ist gewesen*" +
-    "singen#singt#sang#hat gesungen*" +
-    "sollen#soll#sollte#hat gesollt*" +
-    "sprechen#spricht#sprach#hat gesprochen*" +
-    "stehen#steht#stand#hat gestanden*" +
-    "treffen#trifft#traf#hat getroffen*" +
-    "trinken#trinkt#trank#hat getrunken*" +
-    "tun#tut#tat#hat getan*" +
-    "wissen#weiß#wusste#hat gewusst*" +
-    "wollen#will#wollte#hat gewollt*";
+    "beginnen#beginnt#begann#hat begonnen#@A1*" +
+    "bleiben#bleibt#blieb#ist geblieben#@A1*" +
+    "bringen#bringt#brachte#hat gebracht#@A1*" +
+    "backen#backt#buk/backte#hat gebacken/hat gebackt#@A2*" +
+    "biegen#biegt#bog#hat gebogen/ist gebogen#@A2*" +
+    "bieten#bietet#bot#hat geboten#@A2*" +
+    "befehlen#befiehlt#befahl#hat befohlen#@B1*" +
+    "beißen#beißt#biss#hat gebissen#@B1*" +
+    "binden#bindet#band#hat gebunden#@B1*" +
+    "bergen#birgt#barg#hat geborgen#@B2*" +
+    "blasen#bläst#blies#hat geblasen#@B2*" +
+    "gebären#gebärt#gebar#hat geboren#@B2*" +
+    "bewegen#bewegt#bewog/bewegte#hat bewogen/hat bewegt#@C1*" + 
+    "dringen#dringt#drang#hat gedrungen/ist gedrungen#@C1*" +
+    "erlöschen#erlischt#erlosch#ist erloschen#@C1*" +
+    "bersten#birst#barst#ist geborsten#@C2*" +
+    "bleichen#bleicht#blich/bleichte#ist geblichen/hat gebleicht#@C2*" +
+    "dreschen#drischt#drosch#hat gedroschen#@C2";
 
 /* 
 ----------------------------------------------------------------------------------
@@ -130,11 +123,12 @@ read from a .txt file. Instead, it will be directly loaded here.
 */ 
 
 class verb {
-    constructor(infinitive, present, past_simple, past_participle, isTaken){
+    constructor(infinitive, present, past_simple, past_participle, token, isTaken){
         this._infinitive = infinitive;
         this._present = present;
         this._past_simple = past_simple;
         this._past_participle = past_participle;
+        this._token = token; // an identifier that separates groups of similar verbs
         this._taken = isTaken;       
     }
 
@@ -152,6 +146,14 @@ class verb {
 
     get pastParticiple(){
         return this._past_participle;
+    }
+
+    get token(){
+        return this._token;
+    }
+
+    set token(newToken){
+        this._token = newToken;
     }
 
     get taken(){
@@ -194,7 +196,7 @@ function shuffleVerb(currentListOfVerbs, currentWordCount){
     // the number of verbs that were already taken is the current wordCount - 1.
     let takenVerbs = Number(currentWordCount.innerHTML) - 1;
     console.log('Word count = ' + takenVerbs);
-    let shuffledNumber = Math.floor(Math.random() * (Number(studentLearnedWords.value) - takenVerbs)); 
+    let shuffledNumber = Math.floor(Math.random() * (Number(aluno.words_learned) - takenVerbs)); 
     console.log('shuffled number = ' + shuffledNumber);
     // Scan the whole list of verbs to point to a non-taken verb in sorted position
     for(let i = 0; i < shuffledNumber || currentListOfVerbs[i].taken === true ; i++){
@@ -242,10 +244,45 @@ const listOfVerbs = []; // stores all verbs that are in the txt file loaded as v
 
 verbsRead.forEach(verbForm => {
     let singleVerb = verbForm.split('#');
-    listOfVerbs.push(new verb(singleVerb[0], singleVerb[1], singleVerb[2], singleVerb[3], false));   
+    listOfVerbs.push(new verb(singleVerb[0], singleVerb[1], singleVerb[2], singleVerb[3], singleVerb[4], false));   
 });
 
 console.log(listOfVerbs);
+
+/*
+----------------------------------------------------------------------------------
+calculateWordsLearned()
+----------------------------------------------------------------------------------
+This function sets the words_learned value for students.
+To be used by excludeByTag();
+*/
+
+function calculateWordsLearned(theStudent){
+    theStudent.words_learned = listOfVerbs.length;
+}
+
+/*
+----------------------------------------------------------------------------------
+excludeByTag()
+----------------------------------------------------------------------------------
+This function will set words of all unwanted (unchecked) tags as taken. It will
+then update the number of possible words.
+*/
+
+function excludeByTag(theListOfVerbs, theListOfCheckboxes, theStudent){
+    const levels = ['@A1', '@A2', '@B1', '@B2', '@C1', '@C2' ]; // tags that relate to CEFR level options
+    for(let i = 0; i < theListOfCheckboxes.length; i++){
+        if(theListOfCheckboxes[i].checked === false){
+            for(let j = 0; j < theListOfVerbs.length; j++){
+                if(theListOfVerbs[j].token === levels[i]){
+                    console.log(theListOfVerbs[j].infinitive + ' was taken');
+                    theListOfVerbs[j].taken = true;
+                    theStudent.words_learned --;
+                }
+            }
+        }
+    }
+}
 
 let startBtn = document.querySelector('#btn-start');
 startBtn.onclick = function(){
@@ -257,13 +294,11 @@ startBtn.onclick = function(){
         resetStudentScore();
         updateStudentScore();
         logMessage = 'QUIZ LOG:<br><br>';
-        if(studentLearnedWords.value < 1){
-            // invalid number of learned words
-            studentLearnedWords.value = 1;
-        }else if(studentLearnedWords.value > listOfVerbs.length){
-            // invalid number of learned words
-            studentLearnedWords.value = listOfVerbs.length;
-        }
+
+        calculateWordsLearned(aluno);
+        excludeByTag(listOfVerbs, cefrCheckBoxes, aluno);
+
+        console.log(listOfVerbs);
 
         stateMachine(states.QUIZ_STARTED_NO_ANSWER);
     }
@@ -364,7 +399,7 @@ showAnsBtn.onclick = function(){
 let nextWordBtn = document.querySelector('#btn-next-word');
 nextWordBtn.onclick = function(){
     // Check if all words were already taken. No new words to show.
-    if(aluno.words_total >= Number(studentLearnedWords.value))
+    if(aluno.words_total >= Number(aluno.words_learned))
     {
         stateMachine(states.NO_MORE_WORDS);
     } else{
@@ -438,7 +473,6 @@ function stateMachine(currentState){
         case states.STUDENT_REGISTERED:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
             messageBoard.innerHTML = 'Choose how many words from the list you already know in the "learned words" box and start the quiz anytime.';
-            studentLearnedWords.disabled = false;
             startBtn.disabled = false;
             startBtn.style.backgroundColor="#DDDD00";
             showAnsBtn.disabled = true;
@@ -453,6 +487,17 @@ function stateMachine(currentState){
             presentCheckbox.disabled = false;
             pastSimpleCheckbox.disabled = false;
             pastParticipleCheckbox.disabled = false;
+            cefrCheckBoxes.forEach(
+                function(checkbox){
+                    checkbox.disabled = false;
+                }   
+            );
+            cefrCheckBoxes.forEach(
+                function(checkbox){
+                    checkbox.checked = false;
+                }   
+            );
+            cefrCheckBoxes[0].checked = true; 
             break;
         case states.QUIZ_STARTED_NO_ANSWER:
             setLabelVisibility('visible'); // Show verbs. Student needs to write the answers
@@ -460,7 +505,6 @@ function stateMachine(currentState){
             shuffledIndex = shuffleVerb(listOfVerbs, wordNumber);
             console.log(shuffledIndex);
             showInfinitive(infinitiveAnswer, presentAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
-            studentLearnedWords.disabled = true;
             startBtn.disabled = true;
             startBtn.style.backgroundColor="#555500";
             showAnsBtn.disabled = false;
@@ -490,11 +534,15 @@ function stateMachine(currentState){
             }else{
                 pastParticipleAnswer.disabled = false;
             }
+            cefrCheckBoxes.forEach(
+                function(checkbox){
+                    checkbox.disabled = true;
+                }   
+            );
             break;
         case states.QUIZ_STARTED_ANSWER_SHOWN:
             messageBoard.innerHTML = 'Was the given answer correct or incorrect?';
             showPast(infinitiveAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
-            studentLearnedWords.disabled = true;
             startBtn.disabled = true;
             startBtn.style.backgroundColor="#555500";
             showAnsBtn.disabled = true;
@@ -508,7 +556,6 @@ function stateMachine(currentState){
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
             messageBoard.innerHTML = 'Congratulations! Your answer is correct. Click on NEXT WORD to proceed.';
             showPast(infinitiveAnswer, presentAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
-            studentLearnedWords.disabled = true;
             startBtn.disabled = true;
             startBtn.style.backgroundColor="#555500";
             showAnsBtn.disabled = true;
@@ -522,7 +569,6 @@ function stateMachine(currentState){
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
             messageBoard.innerHTML = 'Unfortunately, your answer is incorrect. Click on NEXT WORD to proceed.';
             showPast(infinitiveAnswer, presentAnswer, pastSimpleAnswer, pastParticipleAnswer, listOfVerbs, shuffledIndex);
-            studentLearnedWords.disabled = true;
             startBtn.disabled = true;
             startBtn.style.backgroundColor="#555500";
             showAnsBtn.disabled = true;
@@ -544,7 +590,6 @@ function stateMachine(currentState){
             }
             messageToBeShown = messageToBeShown.concat('<br>There are no more words to show. Press RESET QUIZ to create a new quiz.');           
             messageBoard.innerHTML = messageToBeShown; 
-            studentLearnedWords.disabled = true;
             startBtn.disabled = true;
             startBtn.style.backgroundColor="#555500";
             showAnsBtn.disabled = true;
