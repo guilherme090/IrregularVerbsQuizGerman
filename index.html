@@ -16,20 +16,20 @@
                     <!-- Data of the student who is currently playing the game -->
 
                 <div>
-                    <label>Learned words: </label><input type="number" id="learned-words" min="1" max="100" value="1"></input>
+                    <label>Gelernte Wörter: </label><input type="number" id="learned-words" min="1" max="100" value="1"></input>
                     <br>
 
                     <!-- Present (label and checkbox) -->
                     <input type="checkbox" id="include-present" onclick="togglePresent()">
-                    <label>Include Present</label> 
+                    <label>Präsens (3. Person) einfügen</label> 
 
                     <!-- Past Simple (label and checkbox) -->
                     <input type="checkbox" id="include-past-simple" onclick="togglePastSimple()">
-                    <label>Include Past Simple</label> 
+                    <label>Präteritum (3. Person) einfügen</label> 
 
                     <!-- Past Participle (label and checkbox) -->
                     <input type="checkbox" id="include-past-participle" onclick="togglePastParticiple()">
-                    <label>Include Past Participle</label>
+                    <label>Perfekt (3. Person) einfügen</label>
                     
                 </div>
             </div>
@@ -38,29 +38,29 @@
 
             <!-- Quiz area -->
             <div class="container" id="quiz-area">
-            <label>Word number: </label><label id="word-no"> 0</label>
+            <label>Wörterzahl: </label><label id="word-no"> 0</label>
                 <div class="container" id="quiz-labels">
    
                     <article id="message">
                         Message Board.
                     </article>
 
-                    <ul><label class="answers">Infinitive:</label> <label class="answers" id="answer-infinitive"></label></ul>
-                    <ul><label class="answers">Present:</label> <input class="answers" type="text"label class="answers" id="answer-present"></input></ul>
-                    <ul><label class="answers">Past Simple:</label> <input class="answers" type="text" id="answer-past-simple"></input></ul>
-                    <ul><label class="answers">Past Participle:</label> <input class="answers" type="text" id="answer-past-participle"></input></ul>
+                    <ul><label class="answers">Infinitiv:</label> <label class="answers" id="answer-infinitive"></label></ul>
+                    <ul><label class="answers">Präsens:</label> <input class="answers" type="text"label class="answers" id="answer-present"></input></ul>
+                    <ul><label class="answers">Präteritum:</label> <input class="answers" type="text" id="answer-past-simple"></input></ul>
+                    <ul><label class="answers">Perfekt:</label> <input class="answers" type="text" id="answer-past-participle"></input></ul>
     
                 </div>
-                <label>Correct Answers:</label> <label id="correct-pct">0.00</label><label>%</label>
+                <label>Richtige Antworten:</label> <label id="correct-pct">0.00</label><label>%</label>
             </div>
 
             <div class="container" id="final-buttons">
                 <div class="container" id="results">
-                    <button class="btn-yellow" id="btn-show-answer">CHECK ANSWER</button>
-                    <button class="btn-yellow" id="btn-next-word">NEXT WORD</button>
+                    <button class="btn-yellow" id="btn-show-answer">ANTWORT KONTROLIEREN</button>
+                    <button class="btn-yellow" id="btn-next-word">NÄCHSTES WORT</button>
                     <br><br>
-                    <button class="btn-yellow" id="btn-start">START QUIZ</button>
-                    <button class="btn-yellow" id="btn-save">RESET QUIZ</button>
+                    <button class="btn-yellow" id="btn-start">QUIZ BEGINNEN</button>
+                    <button class="btn-yellow" id="btn-save">QUIZ NEU ANFANGEN</button>
                 </div>
             </div>
             
