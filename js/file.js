@@ -573,18 +573,19 @@ The program erases all data and becomes prepared to a new quiz.
 
 const resetBtn = document.querySelector('#btn-reset');
 resetBtn.onclick = function(){
-    
-    // Erase quiz log
-    quizLogBoard.innerHTML = 'QUIZ LOG:';
-    
-    stateMachine(states.STUDENT_REGISTERED);
-    wordNumber.innerHTML = 0;
-    infinitiveAnswer.innerHTML = '';
-    presentAnswer.value = '';
-    pastSimpleAnswer.value = '';
-    pastParticipleAnswer.value = '';
-    resetStudentScore();
-    updateStudentScore();
+    if(confirm('Möchten Sie das Quiz wirklich zurücksetzen? Sie werden alle Ihre aktuellen Fortschritte verlieren.')){
+        // Erase quiz log
+        quizLogBoard.innerHTML = 'QUIZ LOG:';
+        
+        stateMachine(states.STUDENT_REGISTERED);
+        wordNumber.innerHTML = 0;
+        infinitiveAnswer.innerHTML = '';
+        presentAnswer.value = '';
+        pastSimpleAnswer.value = '';
+        pastParticipleAnswer.value = '';
+        resetStudentScore();
+        updateStudentScore();
+    }
 }
 
 /* 
