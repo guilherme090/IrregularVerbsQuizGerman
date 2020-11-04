@@ -571,8 +571,8 @@ Program resetting
 The program erases all data and becomes prepared to a new quiz.
 */ 
 
-const saveBtn = document.querySelector('#btn-save');
-saveBtn.onclick = function(){
+const resetBtn = document.querySelector('#btn-reset');
+resetBtn.onclick = function(){
     
     // Erase quiz log
     quizLogBoard.innerHTML = 'QUIZ LOG:';
@@ -634,8 +634,8 @@ function stateMachine(currentState){
             showAnsBtn.style.backgroundColor="#555500";
             nextWordBtn.disabled = true;
             nextWordBtn.style.backgroundColor="#555500";
-            saveBtn.disabled = true;
-            saveBtn.style.backgroundColor="#555500";
+            resetBtn.disabled = true;
+            resetBtn.style.backgroundColor="#555500";
             presentCheckbox.checked = true;
             pastSimpleCheckbox.checked = true;
             pastParticipleCheckbox.checked = true;
@@ -666,8 +666,8 @@ function stateMachine(currentState){
             showAnsBtn.style.backgroundColor="#DDDD00";
             nextWordBtn.disabled = true;
             nextWordBtn.style.backgroundColor="#555500";
-            saveBtn.disabled = false;
-            saveBtn.style.backgroundColor="#DDDD00";
+            resetBtn.disabled = false;
+            resetBtn.style.backgroundColor="#DDDD00";
             presentCheckbox.disabled = true;
             pastSimpleCheckbox.disabled = true;
             pastParticipleCheckbox.disabled = true;
@@ -705,8 +705,8 @@ function stateMachine(currentState){
             showAnsBtn.style.backgroundColor="#555500";
             nextWordBtn.disabled = false;
             nextWordBtn.style.backgroundColor="#DDDD00";
-            saveBtn.disabled = false;
-            saveBtn.style.backgroundColor="#DDDD00";
+            resetBtn.disabled = false;
+            resetBtn.style.backgroundColor="#DDDD00";
             break;
         case states.QUIZ_STARTED_ANSWER_INCORRECT:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
@@ -718,8 +718,8 @@ function stateMachine(currentState){
             showAnsBtn.style.backgroundColor="#555500";
             nextWordBtn.disabled = false;
             nextWordBtn.style.backgroundColor="#DDDD00";
-            saveBtn.disabled = false;
-            saveBtn.style.backgroundColor="#DDDD00";
+            resetBtn.disabled = false;
+            resetBtn.style.backgroundColor="#DDDD00";
             break;
         case states.NO_MORE_WORDS:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
@@ -737,8 +737,8 @@ function stateMachine(currentState){
             showAnsBtn.style.backgroundColor="#555500";
             nextWordBtn.disabled = true;
             nextWordBtn.style.backgroundColor="#555500";
-            saveBtn.disabled = false;
-            saveBtn.style.backgroundColor="#DDDD00";
+            resetBtn.disabled = false;
+            resetBtn.style.backgroundColor="#DDDD00";
             break;
     }
 }
