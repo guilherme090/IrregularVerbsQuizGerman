@@ -562,7 +562,7 @@ nextWordBtn.onclick = function(){
         wordNumber.innerHTML = aluno.words_total + 1;
         stateMachine(states.QUIZ_STARTED_NO_ANSWER);
     }
-}
+};
 
 /* 
 ----------------------------------------------------------------------------------
@@ -586,7 +586,14 @@ resetBtn.onclick = function(){
         resetStudentScore();
         updateStudentScore();
     }
-}
+};
+
+const endBtn = document.querySelector('#btn-end');
+endBtn.onclick = function(){
+    if(confirm('Sind Sie sicher, dass Sie das Quiz mit Ihrer aktuellen Punktzahl beenden möchten?')){
+        stateMachine(states.NO_MORE_WORDS);
+    }
+};
 
 /* 
 ----------------------------------------------------------------------------------
@@ -637,6 +644,8 @@ function stateMachine(currentState){
             nextWordBtn.style.backgroundColor="#555500";
             resetBtn.disabled = true;
             resetBtn.style.backgroundColor="#555500";
+            endBtn.disabled = true;
+            endBtn.style.backgroundColor="#555500";
             presentCheckbox.checked = true;
             pastSimpleCheckbox.checked = true;
             pastParticipleCheckbox.checked = true;
@@ -669,6 +678,8 @@ function stateMachine(currentState){
             nextWordBtn.style.backgroundColor="#555500";
             resetBtn.disabled = false;
             resetBtn.style.backgroundColor="#DDDD00";
+            endBtn.disabled = false;
+            endBtn.style.backgroundColor="#DDDD00";
             presentCheckbox.disabled = true;
             pastSimpleCheckbox.disabled = true;
             pastParticipleCheckbox.disabled = true;
@@ -708,6 +719,8 @@ function stateMachine(currentState){
             nextWordBtn.style.backgroundColor="#DDDD00";
             resetBtn.disabled = false;
             resetBtn.style.backgroundColor="#DDDD00";
+            endBtn.disabled = false;
+            endBtn.style.backgroundColor="#DDDD00";
             break;
         case states.QUIZ_STARTED_ANSWER_INCORRECT:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
@@ -721,6 +734,8 @@ function stateMachine(currentState){
             nextWordBtn.style.backgroundColor="#DDDD00";
             resetBtn.disabled = false;
             resetBtn.style.backgroundColor="#DDDD00";
+            endBtn.disabled = false;
+            endBtn.style.backgroundColor="#DDDD00";
             break;
         case states.NO_MORE_WORDS:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
@@ -740,6 +755,8 @@ function stateMachine(currentState){
             nextWordBtn.style.backgroundColor="#555500";
             resetBtn.disabled = false;
             resetBtn.style.backgroundColor="#DDDD00";
+            endBtn.disabled = true;
+            endBtn.style.backgroundColor="#555500";
             break;
     }
 }
