@@ -740,7 +740,7 @@ function stateMachine(currentState){
         case states.NO_MORE_WORDS:
             setLabelVisibility('hidden'); // Hide verbs. Message Board is showing a message
             let messageToBeShown = 'Inhre Punktzahl: ' + aluno.words_right + ' Wörter aus ' + aluno.words_total + '. ';
-            if(aluno.words_right / aluno.words_total < 0.6){
+            if(aluno.words_total < 5 || (aluno.words_right / aluno.words_total < 0.6)){
                 messageToBeShown = messageToBeShown.concat('Lernen Sie das Verbliste weiter! Bald werden Sie viele wörter auswendig lernen!');
             }else{
                 messageToBeShown = messageToBeShown.concat('Sie haben die Aufgabe gut gemacht! Sie haben viele Wörter aus der Liste gelernt!');
