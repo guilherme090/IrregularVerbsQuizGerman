@@ -5,89 +5,106 @@
         <title>Unregelmäßige und starke Verben Quiz</title>
         <link rel="stylesheet" href="css/style.css">
         <body>
-            <div class="container" type="title" id="title-box">
-                <h1>Unregelmäßige und starke Verben Quiz</h1>
+            <div class="container" id="introduction-text">
+                <img class="title-text" src="css/images/title - german.png" alt="Unregelmäßige und starke
+                Verben Quiz" width="1000" height="250">
+                <p>
+                    Ihrer Meinung nach, was wäre die sicherste Art, Unregelmäßige und starke Verben zu 
+                    lernen? Es wird wohl einfacher wenn Sie die Verben lernen, die auf jedem Niveau öfter 
+                    vorkommen.
+                    <br><br>
+                    Um die Verbliste für jedes Niveau zu lernen, klicken sie auf diesem 
+                    <a href="https://deutschlernerblog.de/wp-content/uploads/2018/02/Deutsche-Verben-unregelm%C3%A4%C3%9Fige-starke-Verben-Liste-nach-Sprachniveau-Deutsch-deutschlernerblog_2.pdf">Link</a> 
+                    und üben Sie 
+                    danach mit dem Quiz.
+                    <br><br>
+                    Wenn Sie keine deutsche Tastatur verwenden, können Sie die folgenden Zeichen kopieren 
+                    und einfügen, um sie in Ihre Antwort aufzunehmen: ä ö ü ß.
+                </p>   
             </div>
+            <br>
+            <div class="container" id="application">
+                        
+                <!-- Number of learned words to be included in the shuffling process -->
 
-            <!-- Number of learned words to be included in the shuffling process -->
-
-            <div class="container" type="file" id="student-data">
+                <div class="container" type="file" id="student-data">
 
                     <!-- Data of the student who is currently playing the game -->
 
-                <div>
-                    <!-- Present (label and checkbox) -->
-                    <input type="checkbox" id="include-present" onclick="togglePresent()">
-                    <label>Präsens (3. Person) einfügen</label> 
+                    <div>
+                        <!-- Present (label and checkbox) -->
+                        <input type="checkbox" id="include-present" onclick="togglePresent()">
+                        <label>Präsens (3. Person) einfügen</label> 
 
-                    <!-- Past Simple (label and checkbox) -->
-                    <input type="checkbox" id="include-past-simple" onclick="togglePastSimple()">
-                    <label>Präteritum (3. Person) einfügen</label> 
+                        <!-- Past Simple (label and checkbox) -->
+                        <input type="checkbox" id="include-past-simple" onclick="togglePastSimple()">
+                        <label>Präteritum (3. Person) einfügen</label> 
 
-                    <!-- Past Participle (label and checkbox) -->
-                    <input type="checkbox" id="include-past-participle" onclick="togglePastParticiple()">
-                    <label>Perfekt (3. Person) einfügen</label>
-                    <br>
+                        <!-- Past Participle (label and checkbox) -->
+                        <input type="checkbox" id="include-past-participle" onclick="togglePastParticiple()">
+                        <label>Perfekt (3. Person) einfügen</label>
+                        <br>
 
-                    <!-- Choose levels from A1 to C2 -->
-                    <label>Level: </label>
-                    <input type="checkbox" class="cefr" id="level-a1" onclick="toggleCEFR()">
-                    <label>A1</label> 
-                    <input type="checkbox" class="cefr" id="level-a2" onclick="toggleCEFR()">
-                    <label>A2</label>
-                    <input type="checkbox" class="cefr" id="level-b1" onclick="toggleCEFR()">
-                    <label>B1</label>
-                    <input type="checkbox" class="cefr" id="level-b2" onclick="toggleCEFR()">
-                    <label>B2</label>
-                    <input type="checkbox" class="cefr" id="level-c1" onclick="toggleCEFR()">
-                    <label>C1</label>
-                    <input type="checkbox" class="cefr" id="level-c2" onclick="toggleCEFR()">
-                    <label>C2</label>
+                        <!-- Choose levels from A1 to C2 -->
+                        <label>Level: </label>
+                        <input type="checkbox" class="cefr" id="level-a1" onclick="toggleCEFR()">
+                        <label>A1</label> 
+                        <input type="checkbox" class="cefr" id="level-a2" onclick="toggleCEFR()">
+                        <label>A2</label>
+                        <input type="checkbox" class="cefr" id="level-b1" onclick="toggleCEFR()">
+                        <label>B1</label>
+                        <input type="checkbox" class="cefr" id="level-b2" onclick="toggleCEFR()">
+                        <label>B2</label>
+                        <input type="checkbox" class="cefr" id="level-c1" onclick="toggleCEFR()">
+                        <label>C1</label>
+                        <input type="checkbox" class="cefr" id="level-c2" onclick="toggleCEFR()">
+                        <label>C2</label>
 
+                    </div>
                 </div>
-            </div>
 
-            <br>
+                <br>
 
-            <!-- Quiz area -->
-            <div class="container" id="quiz-area">
-            <label>Wörterzahl: </label><label id="word-no"> 0</label>
-                <div class="container" id="quiz-labels">
-   
-                    <article id="message">
-                        Message Board.
+                <!-- Quiz area -->
+                <div class="container" id="quiz-area">
+                    <label>Wörterzahl: </label><label id="word-no"> 0</label>
+                    <div class="container" id="quiz-labels">
+
+                        <article id="message">
+                            Message Board.
+                        </article>
+
+                        <ul><label class="answers">Infinitiv:</label> <label class="answers" id="answer-infinitive"></label></ul>
+                        <ul><label class="answers">Präsens:</label> <input class="answers" type="text"label class="answers" id="answer-present"></input></ul>
+                        <ul><label class="answers">Präteritum:</label> <input class="answers" type="text" id="answer-past-simple"></input></ul>
+                        <ul><label class="answers">Perfekt:</label> <input class="answers" type="text" id="answer-past-participle"></input></ul>
+
+                    </div>
+                    <label>Richtige Antworten:</label> <label id="correct-pct">0.00</label><label>%</label>
+                    </div>
+
+                    <div class="container" id="final-buttons">
+                    <div class="container" id="results">
+                        <button class="btn-yellow" id="btn-show-answer">ANTWORT KONTROLLIEREN</button>
+                        <button class="btn-yellow" id="btn-next-word">NÄCHSTES WORT</button>
+                        <br><br>
+                        <button class="btn-yellow" id="btn-start">QUIZ BEGINNEN</button>
+                        <button class="btn-yellow" id="btn-reset">QUIZ NEU ANFANGEN</button>
+                        <button class="btn-yellow" id="btn-end">QUIZ BEENDEN</button>
+                    </div>
+                </div>
+
+                <br>
+
+                <!-- Quiz log -->
+
+                <div class="container" id="quiz-log">
+                    <article id="message-log">
+                        QUIZ LOG:
                     </article>
-
-                    <ul><label class="answers">Infinitiv:</label> <label class="answers" id="answer-infinitive"></label></ul>
-                    <ul><label class="answers">Präsens:</label> <input class="answers" type="text"label class="answers" id="answer-present"></input></ul>
-                    <ul><label class="answers">Präteritum:</label> <input class="answers" type="text" id="answer-past-simple"></input></ul>
-                    <ul><label class="answers">Perfekt:</label> <input class="answers" type="text" id="answer-past-participle"></input></ul>
-    
-                </div>
-                <label>Richtige Antworten:</label> <label id="correct-pct">0.00</label><label>%</label>
-            </div>
-
-            <div class="container" id="final-buttons">
-                <div class="container" id="results">
-                    <button class="btn-yellow" id="btn-show-answer">ANTWORT KONTROLLIEREN</button>
-                    <button class="btn-yellow" id="btn-next-word">NÄCHSTES WORT</button>
-                    <br><br>
-                    <button class="btn-yellow" id="btn-start">QUIZ BEGINNEN</button>
-                    <button class="btn-yellow" id="btn-reset">QUIZ NEU ANFANGEN</button>
-                    <button class="btn-yellow" id="btn-end">QUIZ BEENDEN</button>
-                </div>
+                </div>            
             </div>
             
-            <br>
-
-            <!-- Quiz log -->
-
-            <div class="container" id="quiz-log">
-                <article id="message-log">
-                    QUIZ LOG:
-                </article>
-            </div>            
-
             <!-- Controlling index.html itself -->
             <script src="js/file.js"></script> 
             
